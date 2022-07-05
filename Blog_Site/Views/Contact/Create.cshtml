@@ -1,8 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@model CreateContactDTO
+@{
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('../media/img/contact-bg.jpg')">
@@ -31,27 +31,22 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <form asp-action="Create" enctype="multipart/form-data">
                         <div class="form-floating">
-                            <input class="form-control is-invalid" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" data-sb-can-submit="no">
-                            <label for="name">Name</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" data-sb-can-submit="no">
+                            <label asp-for="Name">Name</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control is-invalid" id="email" type="email" placeholder="Enter your email..." data-sb-validations="required,email" data-sb-can-submit="no">
-                            <label for="email">Email address</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            <input class="form-control" id="email" type="email" placeholder="Enter your email..." data-sb-validations="required,email" data-sb-can-submit="no">
+                            <label asp-for="Email">Email address</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control is-invalid" id="phone" type="tel" placeholder="Enter your phone number..." data-sb-validations="required" data-sb-can-submit="no">
-                            <label for="phone">Phone Number</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            <input class="form-control" id="phone" type="tel" placeholder="Enter your phone number..." data-sb-validations="required" data-sb-can-submit="no">
+                            <label asp-for="Phone">Phone Number</label>
                         </div>
                         <div class="form-floating">
-                            <textarea class="form-control is-invalid" id="message" placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required" data-sb-can-submit="no"></textarea>
-                            <label for="message">Message</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required" data-sb-can-submit="no"></textarea>
+                            <label asp-for="Message">Message</label>
                         </div>
                         <br>
                         <!-- Submit success message-->

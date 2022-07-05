@@ -1,3 +1,4 @@
+using Application.DependencyResolver;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Domain.Models.Entities;
@@ -29,6 +30,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new DependencyResolver());
+});
 
 var app = builder.Build();
 
@@ -50,5 +55,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

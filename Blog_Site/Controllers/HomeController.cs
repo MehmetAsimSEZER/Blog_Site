@@ -1,4 +1,6 @@
-﻿using Blog_Site.Models;
+﻿using Application.Models.DTOs;
+using Application.Services.ContactServices;
+using Blog_Site.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -28,10 +30,7 @@ namespace Blog_Site.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

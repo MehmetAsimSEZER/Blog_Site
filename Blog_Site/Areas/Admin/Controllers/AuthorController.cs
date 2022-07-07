@@ -14,6 +14,7 @@ namespace Presantation.Areas.Admin.Controllers
             _authorService = authorService;
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -24,25 +25,16 @@ namespace Presantation.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _authorService.isAuthorExsist(model.FirstName, model.LastName);
-
-                if (!result)
-                {
-                    await _authorService.Create(model);
-                    TempData["Success"] = $"{model.FirstName} {model.LastName} has been added..";
-                    return RedirectToAction("List");
-                }
-                else
-                {
-                    TempData["warning"] = $"Author already exist..";
-                    return View(model);
-                }
+                await _authorService.Create(model);
+                TempData["Success"] = $"{model.FirstName} {model.LastName} has been added..";
+                return RedirectToAction("List");
             }
             else
             {
-                TempData["error"] = $"Author couldn't added..";
+                TempData["warning"] = $"Author already exist..";
                 return View(model);
             }
+
         }
 
 

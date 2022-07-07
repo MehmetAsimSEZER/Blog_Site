@@ -50,6 +50,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -58,6 +60,14 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area=Admin}/{controller=Author}/{action=Create}/{id?}");
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area=Admin}/{controller=Post}/{action=Create}/{id?}");
 
 app.Run();

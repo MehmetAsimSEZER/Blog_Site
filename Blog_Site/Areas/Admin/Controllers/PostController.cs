@@ -11,6 +11,7 @@ namespace Presantation.Areas.Admin.Controllers
 
         public PostController(IPostService postService) => _postService = postService;
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
